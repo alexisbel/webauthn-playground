@@ -668,7 +668,7 @@ $(document).ready(function() {
     let newCredential = {
       type: "public-key",
       id: new Uint8Array(state.createResponse.rawId),
-      transports: ["usb", "nfc", "ble"],
+      transports: ["internal"],
     }
     console.log("New Credential: ", newCredential);
 
@@ -679,7 +679,7 @@ $(document).ready(function() {
       challenge: challengeBytes,
       timeout: 60000,
       allowCredentials: [newCredential],
-      userVerification: "preferred",
+      userVerification: "discouraged",
       extensions: { "txAuthSimple": "Execute order 66." }
     };
 
