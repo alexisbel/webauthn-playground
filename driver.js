@@ -534,7 +534,13 @@ function doWebAuthnCreate(challengeBytes) {
     attestation: undefined,
     timeout: 60000,  // 1 minute
     excludeCredentials: [], // No excludeList
-    extensions: { "exts": true }
+    extensions: { 
+      "exts": true,
+      "credProtect": {
+          "credentialProtectionPolicy": "userVerificationOptional",
+          "enforceCredentialProtectionPolicy": true
+      }
+    }
   };
 
   let rpid = document.domain;
@@ -680,7 +686,13 @@ $(document).ready(function() {
       timeout: 60000,
       allowCredentials: [newCredential],
       userVerification: "discouraged",
-      extensions: { "txAuthSimple": "Execute order 66." }
+      extensions: { 
+        "txAuthSimple": "Execute order 66.", 
+        "credProtect": {
+          "credentialProtectionPolicy": "userVerificationOptional",
+          "enforceCredentialProtectionPolicy": true
+        }
+      }
     };
 
     if ($("#appIdText").val()) {
